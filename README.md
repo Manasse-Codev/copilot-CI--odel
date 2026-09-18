@@ -1,569 +1,132 @@
-# copilot-CI--odel
-# 🇨🇮 PME Copilot CI
+# Ashley
 
-### Le copilote intelligent des petites entreprises ivoiriennes
+### La plateforme web intelligente pour aider les petites entreprises à mieux gérer et décider
 
-> **Transformer les données des PME en décisions intelligentes.**
-
----
-
-## 📌 Présentation
-
-**PME Copilot CI** est une solution numérique intelligente destinée aux petites et moyennes entreprises ivoiriennes.
-
-La plateforme combine **gestion d'entreprise, analyse de données et intelligence artificielle** afin d'aider les entrepreneurs à mieux gérer leurs ventes, leurs stocks, leurs dépenses et leur trésorerie.
-
-Contrairement à un logiciel de gestion classique qui se contente d'enregistrer les informations, PME Copilot CI les **analyse et formule des recommandations compréhensibles et exploitables**.
+> **Les données de votre entreprise. L'intelligence pour mieux décider.**
 
 ---
 
-# 1. 🔴 Le problème
+## 📋 Table des matières
 
-Les petites entreprises jouent un rôle essentiel dans l'économie ivoirienne. Pourtant, une grande partie d'entre elles rencontre encore des difficultés dans la gestion quotidienne de leur activité.
-
-### Principales difficultés
-
-* Gestion des ventes effectuée manuellement.
-* Suivi des stocks sur papier ou sur des outils peu adaptés.
-* Difficulté à calculer précisément les bénéfices.
-* Manque de visibilité sur les dépenses et la trésorerie.
-* Difficulté à identifier les produits les plus rentables.
-* Absence d'alertes en cas de baisse des ventes ou de stock critique.
-* Données de l'entreprise dispersées entre cahiers, fichiers Excel et applications de messagerie.
-* Manque d'outils simples permettant aux entrepreneurs de transformer leurs données en décisions.
-
-### Le problème fondamental
-
-> **Les entrepreneurs disposent de données sur leur activité, mais ne disposent pas toujours des outils nécessaires pour les comprendre et les exploiter efficacement.**
-
-Cette situation peut entraîner :
-
-* des ruptures de stock ;
-* des dépenses mal maîtrisées ;
-* des pertes financières ;
-* de mauvaises décisions d'achat ;
-* une faible capacité d'anticipation ;
-* une croissance difficile à piloter.
-
----
-
-# 2. 💡 La solution proposée
-
-## PME Copilot CI
-
-PME Copilot CI propose une plateforme **web et mobile** permettant à une entreprise de centraliser ses opérations et de bénéficier d'un assistant intelligent.
-
-La solution permet de gérer :
-
-* 📦 les produits et les stocks ;
-* 💰 les ventes ;
-* 💳 les dépenses ;
-* 📊 les indicateurs de performance ;
-* 📈 les revenus et marges ;
-* 🔔 les alertes ;
-* 🤖 l'analyse intelligente par IA.
+* [1. Présentation](#1--présentation)
+* [2. Problématique](#2--problématique)
+* [3. Solution](#3--solution)
+* [4. Objectifs](#4--objectifs)
+* [5. Fonctionnalités](#5--fonctionnalités)
+* [6. Copilot IA](#6--copilot-ia)
+* [7. Architecture](#7--architecture)
+* [8. Stack technique](#8--stack-technique)
+* [9. Structure du projet](#9--structure-du-projet)
+* [10. Modules fonctionnels](#10--modules-fonctionnels)
+* [11. Gestion des données](#11--gestion-des-données)
+* [12. Authentification et sécurité](#12--authentification-et-sécurité)
+* [13. API](#13--api)
+* [14. Interface utilisateur](#14--interface-utilisateur)
+* [15. Intelligence artificielle](#15--intelligence-artificielle)
+* [16. Installation](#16--installation)
+* [17. Configuration](#17--configuration)
+* [18. Lancement du projet](#18--lancement-du-projet)
+* [19. Tests](#19--tests)
+* [20. Déploiement](#20--déploiement)
+* [21. CI/CD](#21--cicd)
+* [22. Roadmap](#22--roadmap)
+* [23. Modèle économique](#23--modèle-économique)
+* [24. Contribution](#24--contribution)
+* [25. Sécurité](#25--sécurité)
+* [26. Licence](#26--licence)
+* [27. Vision](#27--vision)
 
 ---
 
-# 3. 🤖 Une gestion augmentée par l'intelligence artificielle
+# 1. 📌 Présentation
 
-La principale innovation de PME Copilot CI est son **Copilot IA**.
+**Ashley** est une plateforme Web intelligente destinée aux petites et moyennes entreprises, commerçants et entrepreneurs.
 
-L'utilisateur peut poser des questions en langage naturel concernant son entreprise.
+Son objectif est de permettre à une entreprise de **centraliser ses données opérationnelles** et de les transformer progressivement en informations utiles à la prise de décision.
 
-### Exemple
+Ashley combine :
 
-> **« Quel est mon produit le plus rentable ? »**
-
-Le système analyse les données et fournit une réponse.
-
-Autre exemple :
-
-> **« Pourquoi mes ventes ont-elles diminué cette semaine ? »**
-
-Le Copilot analyse l'évolution des ventes et identifie les principales tendances.
-
-Il peut également répondre à :
-
-* « Quels produits dois-je réapprovisionner ? »
-* « Combien ai-je vendu ce mois-ci ? »
-* « Quelle est ma marge moyenne ? »
-* « Quelles sont mes dépenses les plus importantes ? »
-* « Fais-moi un rapport de mon activité. »
-
-### Objectif
-
-Passer de :
-
-**Données → Consultation**
-
-à :
-
-**Données → Analyse → Recommandation → Décision**
-
----
-
-# 4. 🎯 Fonctionnalités principales
-
-## 4.1 Tableau de bord
-
-Le dirigeant dispose d'une vue globale de son activité :
-
-* chiffre d'affaires ;
-* bénéfices estimés ;
-* dépenses ;
-* nombre de ventes ;
-* produits les plus vendus ;
-* évolution des performances.
-
----
-
-## 4.2 Gestion des produits
-
-L'utilisateur peut :
-
-* créer un produit ;
-* modifier ses informations ;
-* définir son prix d'achat ;
-* définir son prix de vente ;
-* suivre sa quantité disponible ;
-* définir un seuil d'alerte.
-
----
-
-## 4.3 Gestion des ventes
-
-Chaque vente permet automatiquement de :
-
-1. enregistrer la transaction ;
-2. diminuer le stock ;
-3. calculer le chiffre d'affaires ;
-4. calculer la marge ;
-5. mettre à jour les statistiques.
-
----
-
-## 4.4 Gestion des dépenses
-
-L'entreprise peut enregistrer :
-
-* achats ;
-* transport ;
-* salaires ;
-* communication ;
-* charges ;
-* autres dépenses.
-
-Ces informations sont ensuite intégrées aux analyses.
-
----
-
-## 4.5 Alertes intelligentes
-
-Le système peut signaler :
-
-* 🔴 stock critique ;
-* 🟠 baisse importante des ventes ;
-* 🟡 dépenses inhabituelles ;
-* 🟢 produits performants.
-
----
-
-## 4.6 Rapports
-
-PME Copilot CI peut générer des rapports synthétiques sur :
-
-* les ventes ;
-* les dépenses ;
-* les bénéfices ;
-* les produits ;
-* les performances mensuelles.
-
----
-
-# 5. 🚀 Notre innovation
-
-Les logiciels de gestion traditionnels permettent principalement de **stocker et afficher les informations**.
-
-PME Copilot CI ajoute une couche d'intelligence.
-
-| Gestion classique        | PME Copilot CI              |
-| ------------------------ | --------------------------- |
-| Enregistre les ventes    | Analyse les ventes          |
-| Affiche le stock         | Alerte sur le stock         |
-| Affiche les statistiques | Explique les statistiques   |
-| Enregistre les dépenses  | Analyse les dépenses        |
-| Produit des données      | Produit des recommandations |
-| Attend l'utilisateur     | Anticipe certains besoins   |
-
-### Notre proposition de valeur
-
-> **PME Copilot CI ne veut pas seulement aider l'entrepreneur à gérer son entreprise. Il veut l'aider à mieux décider.**
-
----
-
-# 6. 🇨🇮 Une solution pensée pour la Côte d'Ivoire
-
-PME Copilot CI est conçu en priorité pour les réalités des petites entreprises ivoiriennes.
-
-La solution prend notamment en compte :
-
-* l'utilisation du **franc CFA** ;
-* la simplicité d'utilisation ;
-* l'utilisation sur smartphone ;
-* les contraintes liées à la connectivité ;
-* les besoins des petits commerçants et entrepreneurs ;
-* la nécessité de rendre l'intelligence artificielle accessible aux petites structures.
-
-À terme, la solution pourra évoluer vers des fonctionnalités adaptées aux différents secteurs d'activité.
-
----
-
-# 7. 🛠️ Plan d'action
-
-Le développement sera réalisé progressivement afin de valider rapidement la solution auprès de véritables utilisateurs.
-
-## Phase 1 — Étude et conception
-
-**Durée : 3 jours**
-
-Actions :
-
-* identification des utilisateurs cibles ;
-* analyse des besoins ;
-* définition des fonctionnalités prioritaires ;
-* conception de l'architecture ;
-* conception UX/UI.
-
-### Livrable
-
-Un prototype fonctionnel et une architecture technique validée.
-
----
-
-## Phase 2 — Développement du MVP
-
-**Durée : 10 jours**
-
-Développement :
-
-* authentification ;
-* gestion des entreprises ;
 * gestion des produits ;
 * gestion des stocks ;
 * gestion des ventes ;
 * gestion des dépenses ;
-* tableau de bord.
+* indicateurs de performance ;
+* alertes ;
+* rapports ;
+* intelligence artificielle.
 
-### Livrable
+Contrairement à un simple logiciel de gestion, Ashley ne se limite pas à enregistrer et afficher les informations.
 
-Une première version utilisable de PME Copilot CI.
-
----
-
-## Phase 3 — Intégration de l'intelligence artificielle
-
-**Durée : 7 jours**
-
-Développement :
-
-* Copilot IA ;
-* analyse des données ;
-* recommandations ;
-* alertes intelligentes ;
-* génération de rapports.
-
-### Livrable
-
-Une version intelligente capable d'analyser l'activité d'une PME.
-
----
-
-## Phase 4 — Tests terrain
-
-**Durée : 5 jours**
-
-Nous testerons la solution auprès d'un petit groupe d'entrepreneurs.
-
-Objectifs :
-
-* identifier les difficultés d'utilisation ;
-* recueillir les commentaires ;
-* mesurer la pertinence des recommandations ;
-* corriger les problèmes ;
-* améliorer l'expérience utilisateur.
-
----
-
-## Phase 5 — Déploiement
-
-**Durée : 5 jours**
-
-Actions :
-
-* déploiement cloud ;
-* sécurisation ;
-* sauvegarde des données ;
-* préparation de la démonstration ;
-* documentation ;
-* préparation du pitch.
-
----
-
-# 8. 🗓️ Feuille de route
+La plateforme cherche à transformer le cycle :
 
 ```text
-Étude
-  ↓
-Conception
-  ↓
-MVP
-  ↓
-Gestion des ventes/stocks
-  ↓
-Intelligence artificielle
-  ↓
-Tests utilisateurs
-  ↓
-Amélioration
-  ↓
-Déploiement pilote
-  ↓
-Commercialisation
+Données
+   ↓
+Analyse
+   ↓
+Compréhension
+   ↓
+Recommandation
+   ↓
+Décision
 ```
 
----
+Le projet est actuellement développé en priorité sous la forme d'une **application Web responsive**.
 
-# 9. 💰 Business Model
-
-PME Copilot CI adoptera principalement un modèle **Freemium + abonnement**.
-
-## 🆓 Offre gratuite
-
-Destinée aux petites activités souhaitant découvrir la solution.
-
-Elle pourra inclure :
-
-* gestion des produits ;
-* gestion basique des ventes ;
-* gestion basique du stock ;
-* tableau de bord limité.
+Une application mobile native pourra être envisagée ultérieurement.
 
 ---
 
-## ⭐ Offre Premium
+# 2. 🔴 Problématique
 
-Abonnement mensuel estimatif :
+De nombreuses petites entreprises rencontrent des difficultés dans la gestion quotidienne de leur activité.
 
-**2 500 à 5 000 FCFA / mois**
+Les principales difficultés identifiées sont notamment :
 
-Elle pourra inclure :
+* gestion manuelle des ventes ;
+* suivi des stocks sur papier ou avec des outils peu adaptés ;
+* difficulté à calculer précisément les bénéfices ;
+* manque de visibilité sur les dépenses ;
+* difficulté à analyser la rentabilité des produits ;
+* absence d'alertes concernant les stocks critiques ;
+* données dispersées dans différents outils ;
+* difficulté à transformer les données disponibles en décisions.
 
-* Copilot IA ;
-* analyses avancées ;
-* rapports ;
-* alertes intelligentes ;
-* historique complet ;
-* sauvegarde avancée.
+Le problème fondamental peut être résumé ainsi :
 
----
+> **Les entrepreneurs disposent de données sur leur activité, mais ne disposent pas toujours des outils nécessaires pour les comprendre et les exploiter efficacement.**
 
-## 🏢 Offre Business
-
-Pour les entreprises ayant plusieurs utilisateurs ou plusieurs points de vente.
-
-Tarification indicative :
-
-**10 000 à 25 000 FCFA / mois**
-
-Fonctionnalités :
-
-* plusieurs utilisateurs ;
-* plusieurs boutiques ;
-* gestion avancée ;
-* rapports personnalisés ;
-* statistiques avancées ;
-* administration des utilisateurs.
+Ashley cherche donc à fournir une plateforme permettant de centraliser ces informations et de les rendre exploitables.
 
 ---
 
-# 10. 💵 Sources de revenus
-
-Les revenus pourront provenir de plusieurs sources :
-
-### 1. Abonnements
-
-Revenus récurrents provenant des utilisateurs Premium et Business.
-
-### 2. Services professionnels
-
-* installation ;
-* configuration ;
-* formation ;
-* accompagnement numérique.
-
-### 3. Solutions personnalisées
-
-Développement de fonctionnalités spécifiques pour certaines entreprises.
-
-### 4. Partenariats
-
-Partenariats avec :
-
-* organisations professionnelles ;
-* incubateurs ;
-* structures d'accompagnement des PME ;
-* institutions financières ;
-* programmes d'entrepreneuriat.
-
----
-
-# 11. 💰 Utilisation du financement de 5 millions FCFA
-
-Le financement demandé sera utilisé pour lancer un premier programme pilote.
-
-| Poste                            |             Budget |
-| -------------------------------- | -----------------: |
-| Développement du MVP             |     1 000 000 FCFA |
-| Infrastructure et services cloud |       400 000 FCFA |
-| Tests terrain                    |       500 000 FCFA |
-| Équipements                      |       500 000 FCFA |
-| Communication et marketing       |       600 000 FCFA |
-| Formation des utilisateurs       |       500 000 FCFA |
-| Déploiement pilote               |       500 000 FCFA |
-| Fonctionnement                   |     1 000 000 FCFA |
-| **TOTAL**                        | **5 000 000 FCFA** |
-
----
-
-# 12. 📈 Stratégie de développement
-
-Notre stratégie sera progressive.
-
-### Étape 1
-
-Lancer un pilote auprès d'un nombre limité de PME.
-
-### Étape 2
-
-Analyser les retours des utilisateurs.
-
-### Étape 3
-
-Améliorer le produit.
-
-### Étape 4
-
-Étendre la solution à davantage d'entreprises.
-
-### Étape 5
-
-Développer des partenariats stratégiques.
-
-### Étape 6
-
-Étendre progressivement PME Copilot CI à d'autres pays de la sous-région.
-
----
-
-# 13. 🌍 Impact attendu
-
-PME Copilot CI vise à contribuer à la transformation numérique des petites entreprises.
-
-### Impact économique
-
-* amélioration du suivi financier ;
-* réduction des pertes liées à une mauvaise gestion ;
-* amélioration de la gestion des stocks ;
-* aide à la prise de décision.
-
-### Impact technologique
-
-* démocratisation de l'IA ;
-* accès à des outils numériques adaptés aux petites structures ;
-* développement de solutions technologiques locales.
-
-### Impact entrepreneurial
-
-* accompagnement des entrepreneurs ;
-* amélioration de la productivité ;
-* développement de la culture de la donnée.
-
----
-
-# 14. 🔐 Sécurité
-
-La protection des données des entreprises constitue une priorité.
-
-Le système devra intégrer notamment :
-
-* authentification sécurisée ;
-* gestion des rôles ;
-* chiffrement des communications ;
-* validation des données ;
-* contrôle des accès ;
-* sauvegardes ;
-* journalisation des opérations ;
-* protection des API.
-
----
-
-# 15. 🧑‍💻 Technologies envisagées
-
-### Frontend
-
-* React
-* React Native / Expo
-
-### Backend
-
-* Python
-* FastAPI
-
-### Base de données
-
-* PostgreSQL
-
-### Authentification
-
-* Firebase Authentication
-
-### Intelligence artificielle
-
-* API de modèles d'IA générative
-
-### Infrastructure
-
-* Cloud
-* API REST
-* Git/GitHub
-* CI/CD
-
----
-
-# 16. 🏆 Vision
-
-Notre vision est de construire une plateforme permettant à une petite entreprise de bénéficier d'un **assistant numérique intelligent**, sans avoir besoin d'une équipe informatique ou financière importante.
-
-À terme, PME Copilot CI pourrait évoluer vers une plateforme complète intégrant :
-
-* comptabilité simplifiée ;
-* prévisions de ventes ;
-* gestion des fournisseurs ;
-* gestion des clients ;
-* facturation ;
-* analyse financière ;
-* recommandations commerciales ;
-* automatisation administrative ;
-* intégration de solutions de paiement.
-
----
-
-# 17. 🎯 Notre ambition
-
-> **Faire de l'intelligence artificielle un outil accessible aux petites entreprises ivoiriennes.**
-
-PME Copilot CI veut contribuer à faire passer les petites entreprises :
+# 3. 💡 Solution
+
+Ashley fournit une interface Web permettant à l'utilisateur de gérer son activité depuis un navigateur.
+
+La plateforme centralise notamment :
+
+```text
+Produits
+   │
+   ├── Stocks
+   │
+   ├── Ventes
+   │
+   ├── Dépenses
+   │
+   └── Performances
+          │
+          ▼
+      Ashley IA
+          │
+          ├── Analyse
+          ├── Alertes
+          ├── Recommandations
+          └── Rapports
+```
+
+L'objectif est de permettre à l'utilisateur de passer progressivement :
 
 **du cahier → au numérique**
 
@@ -577,11 +140,1054 @@ et enfin :
 
 ---
 
-## 🇨🇮 PME Copilot CI
+# 4. 🎯 Objectifs
 
-### **Les données de votre entreprise. L'intelligence pour mieux décider.**
+## Objectif principal
+
+Créer une plateforme Web simple permettant aux petites entreprises de mieux gérer leur activité et d'exploiter leurs données.
+
+## Objectifs spécifiques
+
+Ashley doit permettre de :
+
+* centraliser les données de l'entreprise ;
+* suivre les produits ;
+* suivre les stocks ;
+* enregistrer les ventes ;
+* suivre les dépenses ;
+* calculer les principaux indicateurs ;
+* identifier les tendances ;
+* détecter certaines anomalies ;
+* générer des rapports ;
+* utiliser un assistant IA pour interroger les données ;
+* recevoir des recommandations compréhensibles.
+
+---
+
+# 5. ⚙️ Fonctionnalités
+
+## 5.1 Tableau de bord
+
+Le tableau de bord fournit une vue synthétique de l'activité.
+
+Il pourra notamment afficher :
+
+* chiffre d'affaires ;
+* bénéfices estimés ;
+* dépenses ;
+* nombre de ventes ;
+* produits les plus vendus ;
+* évolution des performances ;
+* niveau des stocks ;
+* alertes importantes.
+
+---
+
+## 5.2 Gestion des produits
+
+L'utilisateur peut gérer les informations relatives à ses produits.
+
+### Informations possibles
+
+* nom ;
+* description ;
+* catégorie ;
+* prix d'achat ;
+* prix de vente ;
+* quantité disponible ;
+* seuil d'alerte ;
+* statut.
+
+### Actions
+
+* créer un produit ;
+* consulter un produit ;
+* modifier un produit ;
+* supprimer un produit ;
+* rechercher un produit ;
+* filtrer les produits.
+
+---
+
+# 5.3 Gestion des stocks
+
+Ashley permet de suivre les quantités disponibles.
+
+Le système doit pouvoir :
+
+* afficher les stocks ;
+* enregistrer les mouvements ;
+* diminuer automatiquement le stock après une vente ;
+* identifier les stocks faibles ;
+* identifier les stocks critiques ;
+* générer des alertes.
+
+Exemple :
+
+```text
+Produit : Riz 25 kg
+
+Stock actuel : 8
+Seuil d'alerte : 10
+
+→ Alerte stock faible
+```
+
+---
+
+# 5.4 Gestion des ventes
+
+Chaque vente enregistrée doit permettre de mettre à jour automatiquement les données associées.
+
+Processus :
+
+```text
+Nouvelle vente
+      ↓
+Enregistrement transaction
+      ↓
+Mise à jour du stock
+      ↓
+Calcul du chiffre d'affaires
+      ↓
+Calcul de la marge
+      ↓
+Mise à jour des statistiques
+```
+
+Les ventes doivent être historisées afin de permettre leur analyse ultérieure.
+
+---
+
+# 5.5 Gestion des dépenses
+
+Ashley permet d'enregistrer les dépenses de l'entreprise.
+
+Exemples :
+
+* achats ;
+* transport ;
+* salaires ;
+* communication ;
+* charges ;
+* autres dépenses.
+
+Ces données sont ensuite utilisées dans les indicateurs et analyses.
+
+---
+
+# 5.6 Alertes
+
+Ashley peut signaler différents événements importants.
+
+### Types d'alertes
+
+* stock critique ;
+* stock faible ;
+* baisse importante des ventes ;
+* dépenses inhabituelles ;
+* produits performants ;
+* autres événements détectés par le système.
+
+Les alertes doivent être compréhensibles et directement exploitables.
+
+---
+
+# 5.7 Rapports
+
+Ashley pourra produire des rapports synthétiques concernant :
+
+* les ventes ;
+* les dépenses ;
+* les bénéfices ;
+* les produits ;
+* les stocks ;
+* les performances mensuelles.
+
+---
+
+# 6. 🤖 Copilot IA
+
+Le **Copilot IA** constitue l'une des fonctionnalités centrales d'Ashley.
+
+Il permet à l'utilisateur d'interagir avec les données de son entreprise en langage naturel.
+
+### Exemple
+
+L'utilisateur peut demander :
+
+> « Quel est mon produit le plus rentable ? »
+
+Ashley analyse les données disponibles et fournit une réponse compréhensible.
+
+Autres exemples :
+
+> « Pourquoi mes ventes ont-elles diminué cette semaine ? »
+
+> « Quels produits dois-je réapprovisionner ? »
+
+> « Combien ai-je vendu ce mois-ci ? »
+
+> « Quelle est ma marge moyenne ? »
+
+> « Quelles sont mes dépenses les plus importantes ? »
+
+> « Fais-moi un rapport de mon activité. »
+
+---
+
+## Principe
+
+Le Copilot doit fonctionner autour du cycle :
+
+```text
+Question utilisateur
+        ↓
+Compréhension de la demande
+        ↓
+Identification des données nécessaires
+        ↓
+Analyse des données
+        ↓
+Interprétation
+        ↓
+Réponse
+        ↓
+Recommandation éventuelle
+```
+
+L'IA ne doit pas simplement générer une réponse générique.
+
+Elle doit, lorsque cela est possible, s'appuyer sur les données réelles de l'entreprise.
+
+---
+
+# 7. 🏗️ Architecture
+
+Pour la première version, Ashley adopte une **architecture Web client-serveur**.
+
+```text
+┌───────────────────────────────────────────────┐
+│                  NAVIGATEUR                   │
+│                                               │
+│              Ashley Web                       │
+│              React                            │
+│              UI Responsive                    │
+└──────────────────────┬────────────────────────┘
+                       │
+                       │ HTTPS
+                       │ REST API
+                       ▼
+┌───────────────────────────────────────────────┐
+│                   BACKEND                     │
+│                                               │
+│                  FastAPI                      │
+│                  Python                       │
+│                                               │
+│  Auth │ Users │ Products │ Sales │ Expenses  │
+│       │ Stocks │ Reports  │ Analytics │ AI   │
+└──────────────────────┬────────────────────────┘
+                       │
+                       │ SQL / ORM
+                       ▼
+┌───────────────────────────────────────────────┐
+│                  PostgreSQL                   │
+│                                               │
+│ Users │ Companies │ Products │ Stocks         │
+│ Sales │ Expenses │ Alerts │ Reports           │
+└───────────────────────────────────────────────┘
+                       │
+                       │
+                       ▼
+┌───────────────────────────────────────────────┐
+│                  IA LAYER                     │
+│                                               │
+│       API de modèles d'IA générative         │
+│                                               │
+│ Analyse │ Assistant │ Recommandations        │
+└───────────────────────────────────────────────┘
+```
+
+---
+
+# 8. 🛠️ Stack technique
+
+## Frontend
+
+* React
+* JavaScript / TypeScript selon l'implémentation
+* Tailwind CSS ou solution de styling équivalente
+* Vite
+* React Router
+* gestion d'état selon les besoins
+
+## Backend
+
+* Python
+* FastAPI
+* Pydantic
+* SQLAlchemy ou ORM équivalent
+* API REST
+
+## Base de données
+
+* PostgreSQL
+
+## Authentification
+
+* Firebase Authentication ou mécanisme d'authentification sécurisé équivalent.
+
+## Intelligence artificielle
+
+* API de modèles d'IA générative.
+
+## Infrastructure
+
+* Cloud
+* Git
+* GitHub
+* CI/CD
+
+---
+
+# 9. 📁 Structure du projet
+
+Une organisation recommandée est :
+
+```text
+Ashley/
+│
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── layouts/
+│   │   ├── hooks/
+│   │   ├── services/
+│   │   ├── stores/
+│   │   ├── utils/
+│   │   ├── assets/
+│   │   ├── App.*
+│   │   └── main.*
+│   ├── package.json
+│   └── README.md
+│
+├── backend/
+│   ├── app/
+│   │   ├── api/
+│   │   ├── core/
+│   │   ├── models/
+│   │   ├── schemas/
+│   │   ├── services/
+│   │   ├── repositories/
+│   │   ├── ai/
+│   │   └── main.py
+│   ├── tests/
+│   ├── requirements.txt
+│   └── README.md
+│
+├── database/
+│   ├── migrations/
+│   └── seeds/
+│
+├── docs/
+│
+├── .env.example
+├── .gitignore
+├── docker-compose.yml
+└── README.md
+```
+
+Cette structure pourra évoluer avec le développement du projet.
+
+---
+
+# 10. 🧩 Modules fonctionnels
+
+Ashley est organisé autour de plusieurs modules.
+
+```text
+Ashley
+│
+├── Authentification
+│
+├── Entreprise
+│
+├── Utilisateurs
+│
+├── Tableau de bord
+│
+├── Produits
+│
+├── Stocks
+│
+├── Ventes
+│
+├── Dépenses
+│
+├── Alertes
+│
+├── Rapports
+│
+├── Analytics
+│
+└── Copilot IA
+```
+
+---
+
+# 11. 🗄️ Gestion des données
+
+Les principales entités prévues sont :
+
+```text
+User
+Company
+Product
+Stock
+Sale
+SaleItem
+Expense
+Alert
+Report
+AIConversation
+AIMessage
+```
+
+Une entreprise peut être associée à plusieurs données opérationnelles.
+
+Exemple :
+
+```text
+Company
+   │
+   ├── Products
+   ├── Stocks
+   ├── Sales
+   ├── Expenses
+   ├── Alerts
+   └── Reports
+```
+
+Les relations exactes et le modèle relationnel définitif seront déterminés lors de la conception technique de la base PostgreSQL.
+
+---
+
+# 12. 🔐 Authentification et sécurité
+
+La sécurité constitue une priorité du projet.
+
+Ashley devra notamment intégrer :
+
+* authentification sécurisée ;
+* gestion des sessions ;
+* contrôle des accès ;
+* gestion des rôles ;
+* validation des données ;
+* chiffrement des communications HTTPS ;
+* protection des API ;
+* sauvegardes ;
+* journalisation des opérations ;
+* protection contre les accès non autorisés.
+
+Les secrets et clés API ne doivent jamais être stockés directement dans le code source.
+
+Ils doivent être fournis via des variables d'environnement ou un gestionnaire de secrets adapté.
+
+---
+
+# 13. 🔌 API
+
+Le backend expose une API REST consommée par le frontend.
+
+Exemple d'organisation :
+
+```text
+/api
+│
+├── /auth
+├── /users
+├── /companies
+├── /products
+├── /stocks
+├── /sales
+├── /expenses
+├── /alerts
+├── /reports
+├── /analytics
+└── /ai
+```
+
+Exemple :
+
+```http
+GET /api/products
+```
+
+```http
+POST /api/products
+```
+
+```http
+GET /api/sales
+```
+
+```http
+POST /api/sales
+```
+
+```http
+GET /api/dashboard
+```
+
+```http
+POST /api/ai/chat
+```
+
+Les endpoints définitifs seront documentés au fur et à mesure de leur implémentation.
+
+---
+
+# 14. 🎨 Interface utilisateur
+
+Ashley doit proposer une interface :
+
+* moderne ;
+* simple ;
+* responsive ;
+* claire ;
+* rapide ;
+* accessible aux utilisateurs non techniques.
+
+L'expérience utilisateur doit privilégier la simplicité.
+
+## Responsive Web
+
+L'application doit fonctionner correctement sur :
+
+* ordinateur ;
+* tablette ;
+* smartphone.
+
+```text
+Desktop
+   ↓
+Tablet
+   ↓
+Mobile
+```
+
+L'application reste néanmoins une **application Web** dans la première phase.
+
+---
+
+# 15. 🧠 Intelligence artificielle
+
+L'IA intervient principalement dans l'analyse et l'interprétation des données.
+
+### Cas d'utilisation
+
+#### Analyse des ventes
+
+Identifier :
+
+* tendances ;
+* variations ;
+* produits performants ;
+* périodes importantes.
+
+#### Analyse des stocks
+
+Identifier :
+
+* produits proches de la rupture ;
+* besoins potentiels de réapprovisionnement ;
+* évolution des stocks.
+
+#### Analyse des dépenses
+
+Identifier :
+
+* catégories de dépenses importantes ;
+* variations ;
+* dépenses inhabituelles.
+
+#### Recommandations
+
+Le système peut formuler des recommandations à partir des données disponibles.
+
+---
+
+# 16. 🚀 Installation
+
+## Prérequis
+
+Avant de lancer Ashley, installer :
+
+* Git ;
+* Node.js ;
+* npm ;
+* Python ;
+* PostgreSQL.
+
+Les versions exactes seront définies dans la documentation technique du projet.
+
+---
+
+## Cloner le projet
+
+```bash
+git clone <URL_DU_REPOSITORY>
+cd Ashley
+```
+
+---
+
+# 17. ⚙️ Configuration
+
+Créer les fichiers `.env` nécessaires à partir de `.env.example`.
+
+Exemple :
+
+```env
+DATABASE_URL=postgresql://user:password@localhost:5432/ashley
+
+API_URL=http://localhost:8000
+
+SECRET_KEY=your_secret_key
+
+AI_API_KEY=your_ai_api_key
+```
+
+### Important
+
+Ne jamais publier :
+
+```text
+.env
+```
+
+dans le dépôt Git.
+
+Le fichier `.env` doit être présent dans `.gitignore`.
+
+---
+
+# 18. ▶️ Lancement du projet
+
+## Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Le frontend sera disponible sur l'adresse indiquée par Vite.
+
+---
+
+## Backend
+
+Créer un environnement virtuel :
+
+```bash
+cd backend
+python -m venv venv
+```
+
+Activer l'environnement.
+
+### Linux / macOS
+
+```bash
+source venv/bin/activate
+```
+
+### Windows
+
+```bash
+venv\Scripts\activate
+```
+
+Installer les dépendances :
+
+```bash
+pip install -r requirements.txt
+```
+
+Lancer FastAPI :
+
+```bash
+uvicorn app.main:app --reload
+```
+
+Le backend sera généralement accessible sur :
+
+```text
+http://localhost:8000
+```
+
+La documentation automatique FastAPI pourra être accessible sur :
+
+```text
+http://localhost:8000/docs
+```
+
+---
+
+# 19. 🧪 Tests
+
+Le projet devra progressivement intégrer plusieurs niveaux de tests.
+
+## Backend
+
+* tests unitaires ;
+* tests d'intégration ;
+* tests API ;
+* tests de sécurité.
+
+## Frontend
+
+* tests des composants ;
+* tests des interactions ;
+* tests des flux utilisateurs.
+
+## Tests fonctionnels
+
+Les principaux parcours devront être vérifiés :
+
+```text
+Inscription
+   ↓
+Connexion
+   ↓
+Création entreprise
+   ↓
+Création produit
+   ↓
+Stock
+   ↓
+Vente
+   ↓
+Mise à jour statistiques
+   ↓
+Analyse IA
+```
+
+---
+
+# 20. ☁️ Déploiement
+
+Ashley est conçu pour être déployé dans le cloud.
+
+Architecture cible :
+
+```text
+                    Internet
+                       │
+                       ▼
+                ┌─────────────┐
+                │   Frontend  │
+                │   React     │
+                └──────┬──────┘
+                       │
+                       ▼
+                ┌─────────────┐
+                │   FastAPI   │
+                │   Backend   │
+                └──────┬──────┘
+                       │
+             ┌─────────┴─────────┐
+             ▼                   ▼
+       PostgreSQL             IA API
+```
+
+Le choix définitif du fournisseur cloud sera effectué lors de la phase de déploiement.
+
+---
+
+# 21. 🔄 CI/CD
+
+Le projet pourra utiliser une pipeline CI/CD pour automatiser :
+
+* vérification du code ;
+* tests ;
+* linting ;
+* build frontend ;
+* vérification backend ;
+* déploiement.
+
+Exemple :
+
+```text
+Push Git
+   ↓
+CI
+   ↓
+Lint
+   ↓
+Tests
+   ↓
+Build
+   ↓
+Validation
+   ↓
+Deploy
+```
+
+---
+
+# 22. 🗺️ Roadmap
+
+## Phase 1 — Conception
+
+Objectifs :
+
+* définition des besoins ;
+* architecture ;
+* conception UX/UI ;
+* modèle de données ;
+* définition des API.
+
+---
+
+## Phase 2 — MVP Web
+
+Développement :
+
+* authentification ;
+* gestion des entreprises ;
+* produits ;
+* stocks ;
+* ventes ;
+* dépenses ;
+* tableau de bord.
+
+---
+
+## Phase 3 — Intelligence artificielle
+
+Ajout :
+
+* Copilot IA ;
+* analyse des données ;
+* recommandations ;
+* alertes intelligentes ;
+* génération de rapports.
+
+---
+
+## Phase 4 — Tests utilisateurs
+
+Objectifs :
+
+* tester avec des utilisateurs ;
+* identifier les problèmes UX ;
+* recueillir les retours ;
+* améliorer la plateforme.
+
+---
+
+## Phase 5 — Déploiement pilote
+
+Actions :
+
+* déploiement cloud ;
+* sécurisation ;
+* sauvegardes ;
+* monitoring ;
+* documentation ;
+* démonstration.
+
+---
+
+## Phase 6 — Évolution
+
+À terme, Ashley pourra évoluer vers :
+
+* comptabilité simplifiée ;
+* prévisions de ventes ;
+* gestion des fournisseurs ;
+* gestion des clients ;
+* facturation ;
+* analyse financière ;
+* recommandations commerciales ;
+* automatisation administrative ;
+* intégration de solutions de paiement ;
+* application mobile.
+
+---
+
+# 23. 💰 Modèle économique
+
+Le modèle économique envisagé repose sur :
+
+**Freemium + abonnement + services professionnels**
+
+## Offre gratuite
+
+Elle pourra inclure :
+
+* gestion des produits ;
+* gestion basique des ventes ;
+* gestion basique des stocks ;
+* tableau de bord limité.
+
+## Offre Premium
+
+Tarification indicative :
+
+**2 500 à 5 000 FCFA / mois**
+
+Elle pourra inclure :
+
+* Copilot IA ;
+* analyses avancées ;
+* rapports ;
+* alertes intelligentes ;
+* historique complet ;
+* sauvegarde avancée.
+
+## Offre Business
+
+Tarification indicative :
+
+**10 000 à 25 000 FCFA / mois**
+
+Elle pourra proposer :
+
+* plusieurs utilisateurs ;
+* plusieurs boutiques ;
+* gestion avancée ;
+* rapports personnalisés ;
+* statistiques avancées ;
+* administration des utilisateurs.
+
+> Les tarifs sont indicatifs et pourront être modifiés après validation du modèle économique.
+
+---
+
+# 24. 🤝 Contribution
+
+Les contributions au projet doivent respecter les conventions techniques définies par l'équipe.
+
+Avant toute modification importante :
+
+1. créer une branche dédiée ;
+2. effectuer les changements ;
+3. ajouter ou mettre à jour les tests ;
+4. vérifier le fonctionnement ;
+5. documenter les changements ;
+6. créer une Pull Request.
+
+Exemple :
+
+```bash
+git checkout -b feature/gestion-produits
+```
+
+Puis :
+
+```bash
+git add .
+git commit -m "feat: ajout gestion des produits"
+git push origin feature/gestion-produits
+```
+
+---
+
+# 25. 🔒 Sécurité
+
+Toute vulnérabilité découverte doit être traitée avec sérieux.
+
+Les principes suivants doivent être respectés :
+
+* ne jamais exposer les secrets ;
+* ne jamais stocker de mots de passe en clair ;
+* valider toutes les entrées ;
+* contrôler les permissions ;
+* protéger les endpoints ;
+* utiliser HTTPS en production ;
+* limiter les accès aux données ;
+* journaliser les opérations sensibles ;
+* effectuer des sauvegardes ;
+* maintenir les dépendances à jour.
+
+Les données d'une entreprise doivent être isolées de celles des autres entreprises.
+
+Le système devra donc appliquer une logique de séparation stricte des données au niveau de l'architecture et des requêtes.
+
+---
+
+# 26. 📄 Licence
+
+La licence définitive du projet sera déterminée par les responsables d'Ashley.
+
+En attendant cette décision, le projet doit être considéré comme un projet propriétaire et son code ne doit pas être redistribué sans autorisation.
+
+---
+
+# 27. 🌍 Vision
+
+Ashley a pour ambition de rendre les outils numériques et l'intelligence artificielle plus accessibles aux petites entreprises.
+
+La vision du projet repose sur une évolution simple :
+
+```text
+        Cahier
+           │
+           ▼
+       Numérique
+           │
+           ▼
+         Données
+           │
+           ▼
+        Analyse
+           │
+           ▼
+   Intelligence artificielle
+           │
+           ▼
+        Décision
+```
+
+Ashley ne cherche donc pas uniquement à fournir un outil permettant d'enregistrer les opérations d'une entreprise.
+
+L'ambition est de construire progressivement un **assistant numérique capable d'aider l'entrepreneur à comprendre son activité et à prendre des décisions à partir de ses propres données**.
+
+---
+
+# 🇨🇮 Ashley
+
+### Les données de votre entreprise. L'intelligence pour mieux décider.
 
 **Statut :** Projet en phase de conception / MVP
+**Nom :** Ashley
+**Type :** Application Web
 **Cible :** TPE, PME, commerçants et entrepreneurs
 **Marché initial :** Côte d'Ivoire
 **Modèle :** Freemium + abonnement + services professionnels
+
+---
+
+## 📌 Résumé technique
+
+| Élément          | Technologie                                              |
+| ---------------- | -------------------------------------------------------- |
+| Application      | Web                                                      |
+| Frontend         | React                                                    |
+| Backend          | Python / FastAPI                                         |
+| Base de données  | PostgreSQL                                               |
+| API              | REST                                                     |
+| Authentification | Firebase Authentication / solution sécurisée équivalente |
+| IA               | API de modèles d'IA générative                           |
+| Infrastructure   | Cloud                                                    |
+| Versioning       | Git / GitHub                                             |
+| CI/CD            | Pipeline automatisée                                     |
+
+---
+
+> **Ashley transforme les données de l'entreprise en informations compréhensibles, puis en recommandations utiles à la décision.**
