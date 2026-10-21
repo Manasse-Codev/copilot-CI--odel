@@ -1,782 +1,415 @@
 # Ashley
 
-### La plateforme web intelligente pour aider les petites entreprises à mieux gérer et décider
+### L'assistant de gestion des petits commerces : vendre, suivre son stock, comprendre son activité.
 
 > **Les données de votre entreprise. L'intelligence pour mieux décider.**
 
----
-
-## 📋 Table des matières
-
-* [1. Présentation](#1--présentation)
-* [2. Problématique](#2--problématique)
-* [3. Solution](#3--solution)
-* [4. Objectifs](#4--objectifs)
-* [5. Fonctionnalités](#5--fonctionnalités)
-* [6. Copilot IA](#6--copilot-ia)
-* [7. Architecture](#7--architecture)
-* [8. Stack technique](#8--stack-technique)
-* [9. Structure du projet](#9--structure-du-projet)
-* [10. Modules fonctionnels](#10--modules-fonctionnels)
-* [11. Gestion des données](#11--gestion-des-données)
-* [12. Authentification et sécurité](#12--authentification-et-sécurité)
-* [13. API](#13--api)
-* [14. Interface utilisateur](#14--interface-utilisateur)
-* [15. Intelligence artificielle](#15--intelligence-artificielle)
-* [16. Installation](#16--installation)
-* [17. Configuration](#17--configuration)
-* [18. Lancement du projet](#18--lancement-du-projet)
-* [19. Tests](#19--tests)
-* [20. Déploiement](#20--déploiement)
-* [21. CI/CD](#21--cicd)
-* [22. Roadmap](#22--roadmap)
-* [23. Modèle économique](#23--modèle-économique)
-* [24. Contribution](#24--contribution)
-* [25. Sécurité](#25--sécurité)
-* [26. Licence](#26--licence)
-* [27. Vision](#27--vision)
+**Statut :** conception / pré-MVP · **Type :** PWA (application web installable, mobile-first) · **Cible :** commerçants, TPE et PME · **Marché initial :** Côte d'Ivoire 🇨🇮
 
 ---
 
-# 1. 📌 Présentation
+## Table des matières
 
-**Ashley** est une plateforme Web intelligente destinée aux petites et moyennes entreprises, commerçants et entrepreneurs.
-
-Son objectif est de permettre à une entreprise de **centraliser ses données opérationnelles** et de les transformer progressivement en informations utiles à la prise de décision.
-
-Ashley combine :
-
-* gestion des produits ;
-* gestion des stocks ;
-* gestion des ventes ;
-* gestion des dépenses ;
-* indicateurs de performance ;
-* alertes ;
-* rapports ;
-* intelligence artificielle.
-
-Contrairement à un simple logiciel de gestion, Ashley ne se limite pas à enregistrer et afficher les informations.
-
-La plateforme cherche à transformer le cycle :
-
-```text
-Données
-   ↓
-Analyse
-   ↓
-Compréhension
-   ↓
-Recommandation
-   ↓
-Décision
-```
-
-Le projet est actuellement développé en priorité sous la forme d'une **application Web responsive**.
-
-Une application mobile native pourra être envisagée ultérieurement.
+1. [Présentation](#1-présentation)
+2. [Problème et hypothèses à valider](#2-problème-et-hypothèses-à-valider)
+3. [Principes de conception](#3-principes-de-conception)
+4. [Fonctionnalités](#4-fonctionnalités)
+5. [Copilot IA](#5-copilot-ia)
+6. [Architecture](#6-architecture)
+7. [Stack technique](#7-stack-technique)
+8. [Modèle de données](#8-modèle-de-données)
+9. [Sécurité et conformité](#9-sécurité-et-conformité)
+10. [Mode hors ligne](#10-mode-hors-ligne)
+11. [API](#11-api)
+12. [Structure du projet](#12-structure-du-projet)
+13. [Installation et lancement](#13-installation-et-lancement)
+14. [Tests](#14-tests)
+15. [Déploiement et CI/CD](#15-déploiement-et-cicd)
+16. [Roadmap](#16-roadmap)
+17. [Risques](#17-risques)
+18. [Modèle économique](#18-modèle-économique)
+19. [Décisions ouvertes](#19-décisions-ouvertes)
+20. [Contribution](#20-contribution)
+21. [Licence](#21-licence)
 
 ---
 
-# 2. 🔴 Problématique
+## 1. Présentation
 
-De nombreuses petites entreprises rencontrent des difficultés dans la gestion quotidienne de leur activité.
+**Ashley** permet à un commerçant de remplacer son cahier par un outil simple, utilisable sur smartphone, qui centralise :
 
-Les principales difficultés identifiées sont notamment :
+- les produits ;
+- les stocks ;
+- les ventes ;
+- les dépenses ;
+- les indicateurs de performance (chiffre d'affaires, marge, bénéfice estimé).
 
-* gestion manuelle des ventes ;
-* suivi des stocks sur papier ou avec des outils peu adaptés ;
-* difficulté à calculer précisément les bénéfices ;
-* manque de visibilité sur les dépenses ;
-* difficulté à analyser la rentabilité des produits ;
-* absence d'alertes concernant les stocks critiques ;
-* données dispersées dans différents outils ;
-* difficulté à transformer les données disponibles en décisions.
+Au-dessus de ces données, Ashley ajoute progressivement :
 
-Le problème fondamental peut être résumé ainsi :
+- des **alertes** (stock faible, baisse des ventes, dépense inhabituelle) ;
+- des **rapports** ;
+- un **Copilot IA** qui répond en langage naturel à partir des données réelles de l'entreprise.
 
-> **Les entrepreneurs disposent de données sur leur activité, mais ne disposent pas toujours des outils nécessaires pour les comprendre et les exploiter efficacement.**
-
-Ashley cherche donc à fournir une plateforme permettant de centraliser ces informations et de les rendre exploitables.
+Trajectoire : `cahier → numérique → données → analyse → décision`.
 
 ---
 
-# 3. 💡 Solution
+## 2. Problème et hypothèses à valider
 
-Ashley fournit une interface Web permettant à l'utilisateur de gérer son activité depuis un navigateur.
+Beaucoup de petits commerces :
 
-La plateforme centralise notamment :
+- enregistrent leurs ventes à la main ;
+- suivent leur stock sur papier ou de mémoire ;
+- ne connaissent pas leur marge réelle ;
+- n'ont pas de vision claire de leurs dépenses ;
+- découvrent les ruptures de stock trop tard.
 
-```text
-Produits
-   │
-   ├── Stocks
-   │
-   ├── Ventes
-   │
-   ├── Dépenses
-   │
-   └── Performances
-          │
-          ▼
-      Ashley IA
-          │
-          ├── Analyse
-          ├── Alertes
-          ├── Recommandations
-          └── Rapports
-```
+**Hypothèses à valider avec de vrais commerçants avant d'investir dans l'IA :**
 
-L'objectif est de permettre à l'utilisateur de passer progressivement :
+| # | Hypothèse | Comment la valider |
+|---|-----------|--------------------|
+| H1 | Un commerçant accepte d'enregistrer ses ventes dans l'outil s'il le fait en quelques secondes | Test terrain avec 5 à 10 commerçants |
+| H2 | Le suivi du stock et les alertes apportent une valeur perçue sans IA | Retours des pilotes sur la phase 1 |
+| H3 | Les commerçants sont prêts à payer 2 500 à 5 000 FCFA/mois pour des analyses avancées | Entretiens et pilote payant |
+| H4 | Le coût de l'IA par utilisateur reste inférieur au prix de l'offre Premium | Mesure du coût réel par requête |
 
-**du cahier → au numérique**
-
-puis :
-
-**du numérique → à la donnée**
-
-et enfin :
-
-**de la donnée → à la décision intelligente.**
+> **Le risque n°1 du projet n'est pas technique : c'est l'adoption.** Si saisir une vente est plus lent que d'écrire dans un cahier, l'outil sera abandonné, quelle que soit la qualité de l'IA.
 
 ---
 
-# 4. 🎯 Objectifs
+## 3. Principes de conception
 
-## Objectif principal
-
-Créer une plateforme Web simple permettant aux petites entreprises de mieux gérer leur activité et d'exploiter leurs données.
-
-## Objectifs spécifiques
-
-Ashley doit permettre de :
-
-* centraliser les données de l'entreprise ;
-* suivre les produits ;
-* suivre les stocks ;
-* enregistrer les ventes ;
-* suivre les dépenses ;
-* calculer les principaux indicateurs ;
-* identifier les tendances ;
-* détecter certaines anomalies ;
-* générer des rapports ;
-* utiliser un assistant IA pour interroger les données ;
-* recevoir des recommandations compréhensibles.
+1. **Saisie ultra-rapide d'abord.** Enregistrer une vente doit prendre quelques secondes, avec peu de champs, des produits favoris en accès direct et des boutons larges.
+2. **Mobile-first.** Les utilisateurs sont principalement sur smartphone Android, avec un réseau parfois instable et des données mobiles coûteuses.
+3. **Valeur dès le premier jour.** Le tableau de bord et les alertes doivent être utiles sans IA. Le Copilot devient pertinent une fois les données accumulées.
+4. **Les chiffres sont calculés par le code, jamais par l'IA.** L'IA explique et recommande ; elle ne calcule pas.
+5. **Isolation stricte entre entreprises.** Aucune donnée ne doit pouvoir fuiter d'un commerçant à un autre.
+6. **Monolithe simple.** Un seul backend, modulaire. Pas de microservices à ce stade.
 
 ---
 
-# 5. ⚙️ Fonctionnalités
+## 4. Fonctionnalités
 
-## 5.1 Tableau de bord
+### 4.1 Tableau de bord
+Chiffre d'affaires, marge, dépenses, bénéfice estimé, nombre de ventes, produits les plus vendus, état des stocks, alertes actives.
 
-Le tableau de bord fournit une vue synthétique de l'activité.
+### 4.2 Produits
+Nom, catégorie, prix d'achat, prix de vente, seuil d'alerte, statut. Création, modification, archivage, recherche, filtres. Une liste de produits favoris accélère la saisie des ventes.
 
-Il pourra notamment afficher :
+### 4.3 Stocks
+Le stock est **déduit d'un journal de mouvements** et non d'une simple colonne modifiée à la main :
 
-* chiffre d'affaires ;
-* bénéfices estimés ;
-* dépenses ;
-* nombre de ventes ;
-* produits les plus vendus ;
-* évolution des performances ;
-* niveau des stocks ;
-* alertes importantes.
+| Type de mouvement | Exemple |
+|-------------------|---------|
+| Entrée | Réapprovisionnement |
+| Vente | Décrémenté automatiquement |
+| Ajustement | Correction après inventaire |
+| Perte | Casse, péremption, vol |
 
----
+Ce journal permet d'auditer les écarts et de corriger les erreurs sans perdre l'historique.
 
-## 5.2 Gestion des produits
+### 4.4 Ventes
+Une vente est une **transaction atomique** : création de la vente, des lignes, des mouvements de stock, le tout ensemble ou rien.
 
-L'utilisateur peut gérer les informations relatives à ses produits.
+Chaque ligne de vente enregistre **le prix de vente et le coût au moment de la vente**. Ainsi, modifier un prix plus tard ne fausse pas l'historique des marges.
 
-### Informations possibles
+### 4.5 Dépenses
+Achats, transport, salaires, communication, charges, autres. Intégrées au calcul du bénéfice estimé.
 
-* nom ;
-* description ;
-* catégorie ;
-* prix d'achat ;
-* prix de vente ;
-* quantité disponible ;
-* seuil d'alerte ;
-* statut.
+### 4.6 Alertes (basées sur des règles)
+Les alertes sont détectées par des **règles déterministes** exécutées par des tâches planifiées, pas par l'IA :
 
-### Actions
+- stock faible / critique ;
+- baisse significative des ventes par rapport à la période précédente ;
+- dépense inhabituelle par rapport à la moyenne ;
+- produit particulièrement performant.
 
-* créer un produit ;
-* consulter un produit ;
-* modifier un produit ;
-* supprimer un produit ;
-* rechercher un produit ;
-* filtrer les produits.
+L'IA peut ensuite reformuler ou contextualiser une alerte, mais ne la détecte pas.
+
+### 4.7 Rapports
+Synthèses des ventes, dépenses, marges, stocks et performances mensuelles, consultables et exportables.
 
 ---
 
-# 5.3 Gestion des stocks
+## 5. Copilot IA
 
-Ashley permet de suivre les quantités disponibles.
-
-Le système doit pouvoir :
-
-* afficher les stocks ;
-* enregistrer les mouvements ;
-* diminuer automatiquement le stock après une vente ;
-* identifier les stocks faibles ;
-* identifier les stocks critiques ;
-* générer des alertes.
-
-Exemple :
-
-```text
-Produit : Riz 25 kg
-
-Stock actuel : 8
-Seuil d'alerte : 10
-
-→ Alerte stock faible
-```
-
----
-
-# 5.4 Gestion des ventes
-
-Chaque vente enregistrée doit permettre de mettre à jour automatiquement les données associées.
-
-Processus :
-
-```text
-Nouvelle vente
-      ↓
-Enregistrement transaction
-      ↓
-Mise à jour du stock
-      ↓
-Calcul du chiffre d'affaires
-      ↓
-Calcul de la marge
-      ↓
-Mise à jour des statistiques
-```
-
-Les ventes doivent être historisées afin de permettre leur analyse ultérieure.
-
----
-
-# 5.5 Gestion des dépenses
-
-Ashley permet d'enregistrer les dépenses de l'entreprise.
-
-Exemples :
-
-* achats ;
-* transport ;
-* salaires ;
-* communication ;
-* charges ;
-* autres dépenses.
-
-Ces données sont ensuite utilisées dans les indicateurs et analyses.
-
----
-
-# 5.6 Alertes
-
-Ashley peut signaler différents événements importants.
-
-### Types d'alertes
-
-* stock critique ;
-* stock faible ;
-* baisse importante des ventes ;
-* dépenses inhabituelles ;
-* produits performants ;
-* autres événements détectés par le système.
-
-Les alertes doivent être compréhensibles et directement exploitables.
-
----
-
-# 5.7 Rapports
-
-Ashley pourra produire des rapports synthétiques concernant :
-
-* les ventes ;
-* les dépenses ;
-* les bénéfices ;
-* les produits ;
-* les stocks ;
-* les performances mensuelles.
-
----
-
-# 6. 🤖 Copilot IA
-
-Le **Copilot IA** constitue l'une des fonctionnalités centrales d'Ashley.
-
-Il permet à l'utilisateur d'interagir avec les données de son entreprise en langage naturel.
-
-### Exemple
-
-L'utilisateur peut demander :
+Le Copilot permet d'interroger ses données en langage naturel :
 
 > « Quel est mon produit le plus rentable ? »
-
-Ashley analyse les données disponibles et fournit une réponse compréhensible.
-
-Autres exemples :
-
-> « Pourquoi mes ventes ont-elles diminué cette semaine ? »
-
 > « Quels produits dois-je réapprovisionner ? »
-
 > « Combien ai-je vendu ce mois-ci ? »
+> « Pourquoi mes ventes ont-elles baissé cette semaine ? »
 
-> « Quelle est ma marge moyenne ? »
+### Principe : appel d'outils (function calling)
 
-> « Quelles sont mes dépenses les plus importantes ? »
+Le modèle n'a **pas** accès à la base de données et n'écrit **pas** de SQL libre.
 
-> « Fais-moi un rapport de mon activité. »
-
----
-
-## Principe
-
-Le Copilot doit fonctionner autour du cycle :
-
-```text
+```
 Question utilisateur
         ↓
-Compréhension de la demande
+Le LLM choisit un outil prédéfini
         ↓
-Identification des données nécessaires
+Le backend exécute une requête paramétrée,
+filtrée par company_id
         ↓
-Analyse des données
+Résultat chiffré renvoyé au LLM
         ↓
-Interprétation
-        ↓
-Réponse
-        ↓
-Recommandation éventuelle
+Le LLM explique et recommande en langage naturel
 ```
 
-L'IA ne doit pas simplement générer une réponse générique.
+Exemples d'outils :
 
-Elle doit, lorsque cela est possible, s'appuyer sur les données réelles de l'entreprise.
+- `get_sales_summary(période)`
+- `top_products_by_margin(période, limite)`
+- `low_stock_items()`
+- `expenses_by_category(période)`
+- `compare_periods(période_a, période_b)`
+
+**Avantages :** montants exacts (calculés par le code), pas d'hallucination sur les chiffres, pas de fuite entre entreprises, pas de risque d'injection SQL.
+
+### Maîtrise des coûts
+
+Chaque requête IA a un coût. Il faut :
+
+- des **quotas par offre** (par jour ou par mois) ;
+- du **cache** pour les questions répétées ;
+- un **modèle léger** pour les demandes simples ;
+- un **suivi du coût réel par utilisateur**, à comparer au prix de l'abonnement (hypothèse H4).
+
+### Garde-fous
+
+- Les données de l'entreprise ne sont envoyées au fournisseur d'IA que sous forme de résultats agrégés nécessaires à la réponse.
+- Le Copilot indique clairement qu'il fournit une aide à la décision et non un conseil comptable ou financier.
+- Les conversations sont journalisées (`AIConversation`, `AIMessage`) pour le suivi de qualité et de coût.
 
 ---
 
-# 7. 🏗️ Architecture
+## 6. Architecture
 
-Pour la première version, Ashley adopte une **architecture Web client-serveur**.
+Monolithe modulaire client-serveur.
 
-```text
-┌───────────────────────────────────────────────┐
-│                  NAVIGATEUR                   │
-│                                               │
-│              Ashley Web                       │
-│              React                            │
-│              UI Responsive                    │
-└──────────────────────┬────────────────────────┘
-                       │
-                       │ HTTPS
-                       │ REST API
-                       ▼
-┌───────────────────────────────────────────────┐
-│                   BACKEND                     │
-│                                               │
-│                  FastAPI                      │
-│                  Python                       │
-│                                               │
-│  Auth │ Users │ Products │ Sales │ Expenses  │
-│       │ Stocks │ Reports  │ Analytics │ AI   │
-└──────────────────────┬────────────────────────┘
-                       │
-                       │ SQL / ORM
-                       ▼
-┌───────────────────────────────────────────────┐
-│                  PostgreSQL                   │
-│                                               │
-│ Users │ Companies │ Products │ Stocks         │
-│ Sales │ Expenses │ Alerts │ Reports           │
-└───────────────────────────────────────────────┘
-                       │
-                       │
-                       ▼
-┌───────────────────────────────────────────────┐
-│                  IA LAYER                     │
-│                                               │
-│       API de modèles d'IA générative         │
-│                                               │
-│ Analyse │ Assistant │ Recommandations        │
-└───────────────────────────────────────────────┘
+```
+┌────────────────────────────────────────────┐
+│  Navigateur / smartphone (PWA)             │
+│  React + TypeScript                        │
+│  Cache local + file d'attente hors ligne   │
+└─────────────────────┬──────────────────────┘
+                      │ HTTPS · REST (JSON)
+                      ▼
+┌────────────────────────────────────────────┐
+│  Backend FastAPI (Python)                  │
+│  Auth · Companies · Products · Stocks      │
+│  Sales · Expenses · Alerts · Reports       │
+│  Analytics · Copilot (outils + LLM)        │
+└───────────┬─────────────────┬──────────────┘
+            │ SQL / ORM       │ HTTPS
+            ▼                 ▼
+┌──────────────────┐   ┌─────────────────────┐
+│   PostgreSQL     │   │  API de LLM         │
+│   (multi-tenant) │   │  (fournisseur tiers)│
+└──────────────────┘   └─────────────────────┘
+            ▲
+            │
+┌──────────────────────────────────────────┐
+│  Tâches planifiées                       │
+│  Calcul des alertes, rapports            │
+└──────────────────────────────────────────┘
 ```
 
----
+### Multi-tenant
 
-# 8. 🛠️ Stack technique
+Chaque table métier porte un `company_id`. Le filtrage est **imposé structurellement**, jamais laissé à la discipline de chaque endpoint :
 
-## Frontend
-
-* React
-* JavaScript / TypeScript selon l'implémentation
-* Tailwind CSS ou solution de styling équivalente
-* Vite
-* React Router
-* gestion d'état selon les besoins
-
-## Backend
-
-* Python
-* FastAPI
-* Pydantic
-* SQLAlchemy ou ORM équivalent
-* API REST
-
-## Base de données
-
-* PostgreSQL
-
-## Authentification
-
-* Firebase Authentication ou mécanisme d'authentification sécurisé équivalent.
-
-## Intelligence artificielle
-
-* API de modèles d'IA générative.
-
-## Infrastructure
-
-* Cloud
-* Git
-* GitHub
-* CI/CD
+- une couche d'accès aux données (repository) qui injecte toujours `company_id` ;
+- et/ou **Row Level Security** PostgreSQL ;
+- des tests automatisés vérifiant qu'un utilisateur ne peut jamais lire ou modifier les données d'une autre entreprise.
 
 ---
 
-# 9. 📁 Structure du projet
+## 7. Stack technique
 
-Une organisation recommandée est :
+| Couche | Choix | Remarque |
+|--------|-------|----------|
+| Frontend | React, **TypeScript**, Vite, React Router, Tailwind CSS | TypeScript retenu pour la fiabilité à long terme |
+| Mobile | **PWA** (service worker, manifeste, installable) | Application native envisagée plus tard seulement si nécessaire |
+| Backend | Python, FastAPI, Pydantic, SQLAlchemy, Alembic | Monolithe modulaire |
+| Base de données | PostgreSQL | Migrations versionnées |
+| Authentification | **À trancher** (voir [§19](#19-décisions-ouvertes)) | Éviter deux sources d'identité non synchronisées |
+| IA | API de LLM avec appel d'outils | Fournisseur à choisir selon coût, qualité, localisation des données |
+| Tâches planifiées | Worker léger (ex. APScheduler ou équivalent) | Alertes et rapports |
+| Hébergement | Cloud, **région européenne** (ex. Paris) | Meilleure latence depuis Abidjan |
+| Versioning / CI | Git, GitHub, GitHub Actions | |
 
-```text
+---
+
+## 8. Modèle de données
+
+Entités principales :
+
+```
+Company ─┬─ User (rôle : propriétaire, gérant, vendeur)
+         ├─ Product
+         ├─ StockMovement
+         ├─ Sale ── SaleItem
+         ├─ Expense
+         ├─ Alert
+         ├─ Report
+         └─ AIConversation ── AIMessage
+```
+
+Règles importantes :
+
+- **Toutes** les tables métier contiennent `company_id`.
+- `StockMovement` : `product_id`, `type` (entrée, vente, ajustement, perte), `quantité`, `date`, `auteur`, `référence` (vente liée le cas échéant).
+- `SaleItem` : `product_id`, `quantité`, **`prix_vente_unitaire`**, **`coût_unitaire`** (valeurs figées au moment de la vente).
+- Les montants sont stockés en **entiers (FCFA, sans décimales)** ou en type décimal exact, jamais en flottants.
+- Les suppressions de produits sont logiques (archivage) pour préserver l'historique.
+- Les ventes saisies hors ligne portent un **identifiant unique généré côté client** pour éviter les doublons à la synchronisation.
+
+**Méthode de coût (à trancher) :** coût moyen pondéré ou dernier prix d'achat. Ce choix détermine le calcul de la marge et doit être fait avant d'implémenter les ventes.
+
+---
+
+## 9. Sécurité et conformité
+
+### Sécurité applicative
+
+- authentification sécurisée et gestion des rôles ;
+- contrôle d'accès par entreprise et par rôle sur chaque endpoint ;
+- validation stricte des entrées (Pydantic) ;
+- HTTPS obligatoire ;
+- limitation de débit sur les endpoints sensibles et sur le Copilot ;
+- journalisation des opérations sensibles ;
+- sauvegardes régulières de la base, avec test de restauration ;
+- mise à jour régulière des dépendances ;
+- aucun secret dans le code : variables d'environnement ou gestionnaire de secrets ;
+- aucun mot de passe en clair.
+
+### Données personnelles et conformité
+
+- Vérifier les obligations applicables auprès de l'**ARTCI** (protection des données personnelles en Côte d'Ivoire), notamment si des données de clients finaux sont enregistrées.
+- Identifier où le fournisseur d'IA traite et conserve les données, et choisir un fournisseur dont les conditions sont compatibles.
+- Prévoir l'export et la suppression des données d'une entreprise à sa demande.
+
+---
+
+## 10. Mode hors ligne
+
+Les commerçants travaillent souvent avec une connexion instable. La PWA doit permettre de **continuer à vendre sans réseau**.
+
+Approche minimale pour le MVP :
+
+- cache local des produits et du stock pour la lecture ;
+- **file d'attente locale** des ventes saisies hors ligne ;
+- synchronisation automatique au retour du réseau ;
+- identifiants uniques générés côté client pour l'idempotence ;
+- indicateur visible de l'état de synchronisation.
+
+Points d'attention : conflits de stock quand plusieurs appareils vendent hors ligne, ordre de synchronisation, ajustements d'inventaire concurrents. Ce chantier est le plus complexe du projet et doit être cadré dès la conception, même si la première version reste simple (un appareil principal par boutique).
+
+---
+
+## 11. API
+
+API REST sous `/api` :
+
+```
+/api/auth
+/api/companies
+/api/users
+/api/products
+/api/stocks          (mouvements et niveaux)
+/api/sales
+/api/expenses
+/api/alerts
+/api/reports
+/api/dashboard
+/api/ai/chat         (Copilot)
+```
+
+La documentation interactive est générée automatiquement par FastAPI (`/docs`). L'API est versionnée (`/api/v1/...`) dès le départ pour permettre des évolutions sans casser les clients installés.
+
+---
+
+## 12. Structure du projet
+
+```
 Ashley/
-│
 ├── frontend/
-│   ├── public/
+│   ├── public/                 # manifeste PWA, icônes
 │   ├── src/
 │   │   ├── components/
 │   │   ├── pages/
-│   │   ├── layouts/
 │   │   ├── hooks/
-│   │   ├── services/
+│   │   ├── services/           # appels API
+│   │   ├── offline/            # cache local, file d'attente, sync
 │   │   ├── stores/
 │   │   ├── utils/
-│   │   ├── assets/
-│   │   ├── App.*
-│   │   └── main.*
-│   ├── package.json
-│   └── README.md
-│
+│   │   └── main.tsx
+│   └── package.json
 ├── backend/
 │   ├── app/
 │   │   ├── api/
-│   │   ├── core/
+│   │   ├── core/               # config, sécurité, multi-tenant
 │   │   ├── models/
 │   │   ├── schemas/
 │   │   ├── services/
-│   │   ├── repositories/
-│   │   ├── ai/
+│   │   ├── repositories/       # accès données filtré par company_id
+│   │   ├── jobs/               # alertes, rapports planifiés
+│   │   ├── copilot/            # outils, prompts, appels LLM
 │   │   └── main.py
-│   ├── tests/
-│   ├── requirements.txt
-│   └── README.md
-│
-├── database/
 │   ├── migrations/
-│   └── seeds/
-│
+│   ├── tests/
+│   └── requirements.txt
 ├── docs/
-│
+│   └── Business_Plan_PME_Copilot_CI_2026.md
 ├── .env.example
 ├── .gitignore
 ├── docker-compose.yml
 └── README.md
 ```
 
-Cette structure pourra évoluer avec le développement du projet.
-
 ---
 
-# 10. 🧩 Modules fonctionnels
+## 13. Installation et lancement
 
-Ashley est organisé autour de plusieurs modules.
+### Prérequis
 
-```text
-Ashley
-│
-├── Authentification
-│
-├── Entreprise
-│
-├── Utilisateurs
-│
-├── Tableau de bord
-│
-├── Produits
-│
-├── Stocks
-│
-├── Ventes
-│
-├── Dépenses
-│
-├── Alertes
-│
-├── Rapports
-│
-├── Analytics
-│
-└── Copilot IA
-```
+Git, Node.js (LTS), npm, Python 3.11+, PostgreSQL. Les versions exactes seront figées dans la documentation technique.
 
----
-
-# 11. 🗄️ Gestion des données
-
-Les principales entités prévues sont :
-
-```text
-User
-Company
-Product
-Stock
-Sale
-SaleItem
-Expense
-Alert
-Report
-AIConversation
-AIMessage
-```
-
-Une entreprise peut être associée à plusieurs données opérationnelles.
-
-Exemple :
-
-```text
-Company
-   │
-   ├── Products
-   ├── Stocks
-   ├── Sales
-   ├── Expenses
-   ├── Alerts
-   └── Reports
-```
-
-Les relations exactes et le modèle relationnel définitif seront déterminés lors de la conception technique de la base PostgreSQL.
-
----
-
-# 12. 🔐 Authentification et sécurité
-
-La sécurité constitue une priorité du projet.
-
-Ashley devra notamment intégrer :
-
-* authentification sécurisée ;
-* gestion des sessions ;
-* contrôle des accès ;
-* gestion des rôles ;
-* validation des données ;
-* chiffrement des communications HTTPS ;
-* protection des API ;
-* sauvegardes ;
-* journalisation des opérations ;
-* protection contre les accès non autorisés.
-
-Les secrets et clés API ne doivent jamais être stockés directement dans le code source.
-
-Ils doivent être fournis via des variables d'environnement ou un gestionnaire de secrets adapté.
-
----
-
-# 13. 🔌 API
-
-Le backend expose une API REST consommée par le frontend.
-
-Exemple d'organisation :
-
-```text
-/api
-│
-├── /auth
-├── /users
-├── /companies
-├── /products
-├── /stocks
-├── /sales
-├── /expenses
-├── /alerts
-├── /reports
-├── /analytics
-└── /ai
-```
-
-Exemple :
-
-```http
-GET /api/products
-```
-
-```http
-POST /api/products
-```
-
-```http
-GET /api/sales
-```
-
-```http
-POST /api/sales
-```
-
-```http
-GET /api/dashboard
-```
-
-```http
-POST /api/ai/chat
-```
-
-Les endpoints définitifs seront documentés au fur et à mesure de leur implémentation.
-
----
-
-# 14. 🎨 Interface utilisateur
-
-Ashley doit proposer une interface :
-
-* moderne ;
-* simple ;
-* responsive ;
-* claire ;
-* rapide ;
-* accessible aux utilisateurs non techniques.
-
-L'expérience utilisateur doit privilégier la simplicité.
-
-## Responsive Web
-
-L'application doit fonctionner correctement sur :
-
-* ordinateur ;
-* tablette ;
-* smartphone.
-
-```text
-Desktop
-   ↓
-Tablet
-   ↓
-Mobile
-```
-
-L'application reste néanmoins une **application Web** dans la première phase.
-
----
-
-# 15. 🧠 Intelligence artificielle
-
-L'IA intervient principalement dans l'analyse et l'interprétation des données.
-
-### Cas d'utilisation
-
-#### Analyse des ventes
-
-Identifier :
-
-* tendances ;
-* variations ;
-* produits performants ;
-* périodes importantes.
-
-#### Analyse des stocks
-
-Identifier :
-
-* produits proches de la rupture ;
-* besoins potentiels de réapprovisionnement ;
-* évolution des stocks.
-
-#### Analyse des dépenses
-
-Identifier :
-
-* catégories de dépenses importantes ;
-* variations ;
-* dépenses inhabituelles.
-
-#### Recommandations
-
-Le système peut formuler des recommandations à partir des données disponibles.
-
----
-
-# 16. 🚀 Installation
-
-## Prérequis
-
-Avant de lancer Ashley, installer :
-
-* Git ;
-* Node.js ;
-* npm ;
-* Python ;
-* PostgreSQL.
-
-Les versions exactes seront définies dans la documentation technique du projet.
-
----
-
-## Cloner le projet
+### Cloner
 
 ```bash
-git clone <URL_DU_REPOSITORY>
-cd Ashley
+git clone https://github.com/Manasse-Codev/<nom-du-depot>.git
+cd <nom-du-depot>
 ```
 
----
+### Configuration
 
-# 17. ⚙️ Configuration
+Copier `.env.example` vers `.env` et renseigner les valeurs :
 
-Créer les fichiers `.env` nécessaires à partir de `.env.example`.
-
-Exemple :
-
-```env
+```
 DATABASE_URL=postgresql://user:password@localhost:5432/ashley
-
-API_URL=http://localhost:8000
-
-SECRET_KEY=your_secret_key
-
-AI_API_KEY=your_ai_api_key
+SECRET_KEY=change_me
+AI_API_KEY=change_me
 ```
 
-### Important
+> Ne jamais commiter `.env`. Il doit figurer dans `.gitignore`.
 
-Ne jamais publier :
+### Backend
 
-```text
-.env
+```bash
+cd backend
+python -m venv venv
+source venv/bin/activate        # Windows : venv\Scripts\activate
+pip install -r requirements.txt
+alembic upgrade head
+uvicorn app.main:app --reload
 ```
 
-dans le dépôt Git.
+API : `http://localhost:8000` · Documentation : `http://localhost:8000/docs`
 
-Le fichier `.env` doit être présent dans `.gitignore`.
-
----
-
-# 18. ▶️ Lancement du projet
-
-## Frontend
+### Frontend
 
 ```bash
 cd frontend
@@ -784,410 +417,142 @@ npm install
 npm run dev
 ```
 
-Le frontend sera disponible sur l'adresse indiquée par Vite.
+---
+
+## 14. Tests
+
+| Niveau | Contenu |
+|--------|---------|
+| Backend unitaires | Calcul de marge, mouvements de stock, règles d'alerte |
+| Backend intégration | Transaction de vente atomique, migrations |
+| **Isolation multi-tenant** | Vérifier qu'un utilisateur ne peut jamais accéder aux données d'une autre entreprise |
+| Copilot | Chaque outil renvoie des données filtrées et correctes ; tests sur des questions types |
+| Frontend | Composants, saisie rapide d'une vente |
+| Hors ligne | Vente sans réseau, synchronisation, absence de doublons |
+| Parcours complet | Inscription → entreprise → produit → stock → vente → tableau de bord → question au Copilot |
 
 ---
 
-## Backend
+## 15. Déploiement et CI/CD
 
-Créer un environnement virtuel :
+Pipeline GitHub Actions :
 
-```bash
-cd backend
-python -m venv venv
+```
+Push / Pull Request
+   ↓
+Lint (frontend + backend)
+   ↓
+Tests (dont isolation multi-tenant)
+   ↓
+Build frontend
+   ↓
+Déploiement staging
+   ↓
+Validation → déploiement production
 ```
 
-Activer l'environnement.
-
-### Linux / macOS
-
-```bash
-source venv/bin/activate
-```
-
-### Windows
-
-```bash
-venv\Scripts\activate
-```
-
-Installer les dépendances :
-
-```bash
-pip install -r requirements.txt
-```
-
-Lancer FastAPI :
-
-```bash
-uvicorn app.main:app --reload
-```
-
-Le backend sera généralement accessible sur :
-
-```text
-http://localhost:8000
-```
-
-La documentation automatique FastAPI pourra être accessible sur :
-
-```text
-http://localhost:8000/docs
-```
+Exigences minimales avant le premier pilote : environnement de staging, HTTPS, sauvegardes automatiques testées, supervision des erreurs et des coûts IA.
 
 ---
 
-# 19. 🧪 Tests
+## 16. Roadmap
 
-Le projet devra progressivement intégrer plusieurs niveaux de tests.
+### Phase 0 : Validation terrain
+- Entretiens avec 10 commerçants.
+- Maquettes de la saisie de vente, testées sur papier ou sur prototype.
+- Décisions techniques ouvertes ([§19](#19-décisions-ouvertes)).
 
-## Backend
+### Phase 1 : MVP « vendre et suivre » (sans IA)
+- Authentification, entreprise, rôles.
+- Produits, journal de stock, ventes avec saisie rapide.
+- Dépenses.
+- Tableau de bord simple.
+- PWA installable, avec saisie hors ligne de base.
+- **Pilote avec quelques commerçants réels.**
 
-* tests unitaires ;
-* tests d'intégration ;
-* tests API ;
-* tests de sécurité.
+### Phase 2 : Alertes et rapports
+- Alertes par règles (stock, ventes, dépenses).
+- Rapports mensuels.
+- Notifications.
+- Amélioration de l'UX à partir des retours du pilote.
 
-## Frontend
+### Phase 3 : Copilot IA
+- Outils d'analyse paramétrés et filtrés par entreprise.
+- Quotas, cache, suivi des coûts.
+- Recommandations de réapprovisionnement et d'analyse de rentabilité.
 
-* tests des composants ;
-* tests des interactions ;
-* tests des flux utilisateurs.
+### Phase 4 : Monétisation
+- Intégration du paiement Mobile Money (Orange Money, MTN MoMo, Wave, via un agrégateur).
+- Offres Gratuit / Premium / Business.
+- Déploiement pilote élargi, monitoring, documentation.
 
-## Tests fonctionnels
-
-Les principaux parcours devront être vérifiés :
-
-```text
-Inscription
-   ↓
-Connexion
-   ↓
-Création entreprise
-   ↓
-Création produit
-   ↓
-Stock
-   ↓
-Vente
-   ↓
-Mise à jour statistiques
-   ↓
-Analyse IA
-```
+### Phase 5 : Évolution
+Fournisseurs, clients, facturation, comptabilité simplifiée, prévisions de ventes, multi-boutiques avancé, application native si justifiée.
 
 ---
 
-# 20. ☁️ Déploiement
+## 17. Risques
 
-Ashley est conçu pour être déployé dans le cloud.
-
-Architecture cible :
-
-```text
-                    Internet
-                       │
-                       ▼
-                ┌─────────────┐
-                │   Frontend  │
-                │   React     │
-                └──────┬──────┘
-                       │
-                       ▼
-                ┌─────────────┐
-                │   FastAPI   │
-                │   Backend   │
-                └──────┬──────┘
-                       │
-             ┌─────────┴─────────┐
-             ▼                   ▼
-       PostgreSQL             IA API
-```
-
-Le choix définitif du fournisseur cloud sera effectué lors de la phase de déploiement.
+| Risque | Gravité | Mitigation |
+|--------|---------|------------|
+| **Adoption : la saisie est trop lourde** | Très élevée | Saisie en quelques secondes, tests terrain dès la phase 0 |
+| **Réseau instable, smartphones modestes** | Élevée | PWA mobile-first, mode hors ligne, pages légères |
+| Fuite de données entre entreprises | Élevée | Filtrage structurel par `company_id`, RLS, tests dédiés |
+| Coût de l'IA supérieur au revenu par utilisateur | Moyenne à élevée | Quotas, cache, modèle léger, calcul avant fixation des prix |
+| Paiement de l'abonnement | Moyenne | Agrégateur Mobile Money, à sélectionner tôt |
+| Conformité données personnelles | Moyenne | Vérification ARTCI, choix du fournisseur d'IA, export/suppression |
+| Conflits de synchronisation hors ligne | Moyenne | Identifiants uniques, périmètre limité en V1 |
+| Marge faussée par un mauvais modèle de coût | Moyenne | Coût figé par ligne de vente, méthode choisie dès la conception |
+| Dépendance à un fournisseur d'IA | Faible à moyenne | Couche d'abstraction autour du LLM |
 
 ---
 
-# 21. 🔄 CI/CD
+## 18. Modèle économique
 
-Le projet pourra utiliser une pipeline CI/CD pour automatiser :
+**Freemium + abonnement.** Les tarifs sont **indicatifs** et à valider par le pilote (hypothèse H3) et par le calcul du coût réel de l'IA (hypothèse H4).
 
-* vérification du code ;
-* tests ;
-* linting ;
-* build frontend ;
-* vérification backend ;
-* déploiement.
+| Offre | Prix indicatif | Contenu |
+|-------|----------------|---------|
+| **Gratuit** | 0 | Produits, ventes, stocks de base, tableau de bord limité |
+| **Premium** | 2 500 à 5 000 FCFA/mois | Alertes avancées, rapports, Copilot IA (avec quota), historique complet |
+| **Business** | 10 000 à 25 000 FCFA/mois | Multi-utilisateurs, multi-boutiques, rapports personnalisés, administration des rôles |
 
-Exemple :
-
-```text
-Push Git
-   ↓
-CI
-   ↓
-Lint
-   ↓
-Tests
-   ↓
-Build
-   ↓
-Validation
-   ↓
-Deploy
-```
+Paiement prévu par Mobile Money. Des services professionnels (mise en place, formation, rapports sur mesure) peuvent compléter l'offre.
 
 ---
 
-# 22. 🗺️ Roadmap
+## 19. Décisions ouvertes
 
-## Phase 1 — Conception
-
-Objectifs :
-
-* définition des besoins ;
-* architecture ;
-* conception UX/UI ;
-* modèle de données ;
-* définition des API.
-
----
-
-## Phase 2 — MVP Web
-
-Développement :
-
-* authentification ;
-* gestion des entreprises ;
-* produits ;
-* stocks ;
-* ventes ;
-* dépenses ;
-* tableau de bord.
+| Sujet | Options | Critère de décision |
+|-------|---------|---------------------|
+| **Authentification** | JWT géré par FastAPI · Supabase (Postgres + auth) · Firebase Auth (avec mapping UID → `users`) | Simplicité, une seule source d'identité, coût, support OTP par SMS |
+| **Méthode de coût** | Coût moyen pondéré · dernier prix d'achat | Précision de la marge vs simplicité de saisie |
+| **Fournisseur d'IA** | À comparer | Coût par requête, qualité du français, localisation et conservation des données |
+| **Hébergement** | Cloud européen (Paris) | Latence depuis Abidjan, coût, conformité |
+| **Agrégateur Mobile Money** | À comparer | Frais, couverture des opérateurs, conditions d'intégration |
+| **Périmètre hors ligne V1** | Lecture seule · saisie de ventes · complet | Effort vs besoin réel constaté sur le terrain |
+| **Nom du dépôt** | Aligner sur « Ashley » | Cohérence avec le nom du produit |
 
 ---
 
-## Phase 3 — Intelligence artificielle
+## 20. Contribution
 
-Ajout :
+1. Créer une branche dédiée : `git checkout -b feature/nom-de-la-fonctionnalité`
+2. Développer et ajouter ou mettre à jour les tests.
+3. Vérifier lint et tests en local.
+4. Documenter les changements.
+5. Ouvrir une Pull Request.
 
-* Copilot IA ;
-* analyse des données ;
-* recommandations ;
-* alertes intelligentes ;
-* génération de rapports.
+Convention de commits : `feat:`, `fix:`, `docs:`, `refactor:`, `test:`, `chore:`.
 
----
-
-## Phase 4 — Tests utilisateurs
-
-Objectifs :
-
-* tester avec des utilisateurs ;
-* identifier les problèmes UX ;
-* recueillir les retours ;
-* améliorer la plateforme.
+Toute modification touchant l'accès aux données doit être accompagnée d'un test d'isolation entre entreprises.
 
 ---
 
-## Phase 5 — Déploiement pilote
+## 21. Licence
 
-Actions :
-
-* déploiement cloud ;
-* sécurisation ;
-* sauvegardes ;
-* monitoring ;
-* documentation ;
-* démonstration.
+Projet **propriétaire** en attendant une décision des responsables du projet. Le code ne doit pas être redistribué sans autorisation.
 
 ---
 
-## Phase 6 — Évolution
-
-À terme, Ashley pourra évoluer vers :
-
-* comptabilité simplifiée ;
-* prévisions de ventes ;
-* gestion des fournisseurs ;
-* gestion des clients ;
-* facturation ;
-* analyse financière ;
-* recommandations commerciales ;
-* automatisation administrative ;
-* intégration de solutions de paiement ;
-* application mobile.
-
----
-
-# 23. 💰 Modèle économique
-
-Le modèle économique envisagé repose sur :
-
-**Freemium + abonnement + services professionnels**
-
-## Offre gratuite
-
-Elle pourra inclure :
-
-* gestion des produits ;
-* gestion basique des ventes ;
-* gestion basique des stocks ;
-* tableau de bord limité.
-
-## Offre Premium
-
-Tarification indicative :
-
-**2 500 à 5 000 FCFA / mois**
-
-Elle pourra inclure :
-
-* Copilot IA ;
-* analyses avancées ;
-* rapports ;
-* alertes intelligentes ;
-* historique complet ;
-* sauvegarde avancée.
-
-## Offre Business
-
-Tarification indicative :
-
-**10 000 à 25 000 FCFA / mois**
-
-Elle pourra proposer :
-
-* plusieurs utilisateurs ;
-* plusieurs boutiques ;
-* gestion avancée ;
-* rapports personnalisés ;
-* statistiques avancées ;
-* administration des utilisateurs.
-
-> Les tarifs sont indicatifs et pourront être modifiés après validation du modèle économique.
-
----
-
-# 24. 🤝 Contribution
-
-Les contributions au projet doivent respecter les conventions techniques définies par l'équipe.
-
-Avant toute modification importante :
-
-1. créer une branche dédiée ;
-2. effectuer les changements ;
-3. ajouter ou mettre à jour les tests ;
-4. vérifier le fonctionnement ;
-5. documenter les changements ;
-6. créer une Pull Request.
-
-Exemple :
-
-```bash
-git checkout -b feature/gestion-produits
-```
-
-Puis :
-
-```bash
-git add .
-git commit -m "feat: ajout gestion des produits"
-git push origin feature/gestion-produits
-```
-
----
-
-# 25. 🔒 Sécurité
-
-Toute vulnérabilité découverte doit être traitée avec sérieux.
-
-Les principes suivants doivent être respectés :
-
-* ne jamais exposer les secrets ;
-* ne jamais stocker de mots de passe en clair ;
-* valider toutes les entrées ;
-* contrôler les permissions ;
-* protéger les endpoints ;
-* utiliser HTTPS en production ;
-* limiter les accès aux données ;
-* journaliser les opérations sensibles ;
-* effectuer des sauvegardes ;
-* maintenir les dépendances à jour.
-
-Les données d'une entreprise doivent être isolées de celles des autres entreprises.
-
-Le système devra donc appliquer une logique de séparation stricte des données au niveau de l'architecture et des requêtes.
-
----
-
-# 26. 📄 Licence
-
-La licence définitive du projet sera déterminée par les responsables d'Ashley.
-
-En attendant cette décision, le projet doit être considéré comme un projet propriétaire et son code ne doit pas être redistribué sans autorisation.
-
----
-
-# 27. 🌍 Vision
-
-Ashley a pour ambition de rendre les outils numériques et l'intelligence artificielle plus accessibles aux petites entreprises.
-
-La vision du projet repose sur une évolution simple :
-
-```text
-        Cahier
-           │
-           ▼
-       Numérique
-           │
-           ▼
-         Données
-           │
-           ▼
-        Analyse
-           │
-           ▼
-   Intelligence artificielle
-           │
-           ▼
-        Décision
-```
-
-Ashley ne cherche donc pas uniquement à fournir un outil permettant d'enregistrer les opérations d'une entreprise.
-
-L'ambition est de construire progressivement un **assistant numérique capable d'aider l'entrepreneur à comprendre son activité et à prendre des décisions à partir de ses propres données**.
-
----
-
-# 🇨🇮 Ashley
-
-### Les données de votre entreprise. L'intelligence pour mieux décider.
-
-**Statut :** Projet en phase de conception / MVP
-**Nom :** Ashley
-**Type :** Application Web
-**Cible :** TPE, PME, commerçants et entrepreneurs
-**Marché initial :** Côte d'Ivoire
-**Modèle :** Freemium + abonnement + services professionnels
-
----
-
-## 📌 Résumé technique
-
-| Élément          | Technologie                                              |
-| ---------------- | -------------------------------------------------------- |
-| Application      | Web                                                      |
-| Frontend         | React                                                    |
-| Backend          | Python / FastAPI                                         |
-| Base de données  | PostgreSQL                                               |
-| API              | REST                                                     |
-| Authentification | Firebase Authentication / solution sécurisée équivalente |
-| IA               | API de modèles d'IA générative                           |
-| Infrastructure   | Cloud                                                    |
-| Versioning       | Git / GitHub                                             |
-| CI/CD            | Pipeline automatisée                                     |
-
----
-
-> **Ashley transforme les données de l'entreprise en informations compréhensibles, puis en recommandations utiles à la décision.**
+**Ashley** transforme les données de l'entreprise en informations compréhensibles, puis en recommandations utiles à la décision.
